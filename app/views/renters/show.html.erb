@@ -1,3 +1,7 @@
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
+
 <h1><%= @renter.username %></h1>
 
 <% @renter.appliances.each do |a| %>

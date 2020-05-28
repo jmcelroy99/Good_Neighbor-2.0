@@ -13,7 +13,22 @@ class AppliancesController < ApplicationController
     end
 
     def create
-        renter_id = session[:owner_id]
+        owner_id = session[:owner_id]
+        @appliance = Appliance.new(appliance_params)
+        if @appliance.save
+            redirect_to @appliance
+        else
+            flash[:errors] = @appliance.errors.full_messages
+            redirect_to new_appliance_url
+        end
+    end
+
+    def edit
+        @appliance = Appliance.find(params[:id])
+    end
+
+    def update
+        owner_id = session[:owner_id]
         @appliance = Appliance.new(appliance_params)
         if @appliance.save
             redirect_to @appliance
@@ -25,7 +40,7 @@ class AppliancesController < ApplicationController
 
     
     def destroy
-            Owner.find(params[:id]).destroy
+            Appliance.find(params[:id]).destroy
             redirect_to @owners
     end
 

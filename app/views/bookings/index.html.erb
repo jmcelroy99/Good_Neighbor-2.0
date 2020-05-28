@@ -1,0 +1,11 @@
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
+
+<h1> Bookings </h1>
+
+<ol type = "1">
+<% @bookings.each do |booking| %>
+   <li><%= booking.appliance.appliance_name %> | <%= booking.renter.username %> | <%= link_to "Review Booking", new_review_path %>
+   <% end %>
+</ol>

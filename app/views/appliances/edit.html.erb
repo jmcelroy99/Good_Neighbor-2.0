@@ -1,3 +1,8 @@
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
+
+
 <h1>Add all the appliances you would like to list for Rent!</h1>
 <%= form_for(@appliance) do |f| %>
     <%= f.label :owner_id  %>

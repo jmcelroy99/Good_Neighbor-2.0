@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   get 'renter/home' => 'renter#home'
-  resources :bookings, only: [:new, :create, :destroy ]
+  resources :bookings, only: [:index, :new, :create, :destroy ]
   resources :appliances 
   resources :owners, except: [:index]
   resources :renters

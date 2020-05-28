@@ -1,2 +1,23 @@
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
+
+<h1>Review Form</h1>
+
 <%= form_for(@review) do |f| %>
-    <%= f.label 
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+
+    <%= f.label :text_review %>
+    <%= f.text_area :text_review %>
+
+    <%= f.label :booking_id %>
+    <%= f.collection_select :booking_id, Booking.all, :id, :id %>
+
+
+    <%= f.submit %>
+<% end %>
+
+<% if flash[:errors] %>
+    <%= flash[:errors] %>
+<% end %>

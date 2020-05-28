@@ -18,10 +18,10 @@ class OwnersController < ApplicationController
     # end
 
     def create
-        @user = Owner.create(owner_params)
+        @owner = Owner.create(owner_params)
         return redirect_to controller: 'owner', action: 'new' unless @user.save
-        session[:owner_id] = @user.id
-        redirect_to owner_path
+        session[:owner_id] = @owner.id
+        redirect_to @owner
     end
 
     def edit

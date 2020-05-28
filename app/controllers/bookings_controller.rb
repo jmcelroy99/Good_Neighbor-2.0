@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+    def index
+        renter_id = session[:renter_id]
+        @bookings = Booking.all
+    end
+    
     def new
         @booking = Booking.new
     end

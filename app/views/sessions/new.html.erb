@@ -11,3 +11,10 @@
 <%= submit_tag "log in" %><br>
 Or <%= link_to(controller: 'renters', action: 'new') { 'Renter sign up' } %> <br>
 <%= link_to(controller: 'owners', action: 'new') { 'Owner sign up' } %><br>
+
+<br>
+
+<!-- should change later with validations -->
+<% if flash[:errors] %>
+   <%= "Username or Password Incorrect" %>
+<% end %>

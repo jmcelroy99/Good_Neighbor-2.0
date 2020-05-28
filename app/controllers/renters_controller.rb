@@ -11,7 +11,7 @@ class RentersController < ApplicationController
     def create
         @renter = Renter.new(renter_params)
         return redirect_to controller: 'renters', action: 'new' unless @renter.save
-        session[:renter_id] = @user.id
+        session[:renter_id] = @renter.id
         redirect_to appliances_path
     end
 

@@ -1,7 +1,9 @@
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
+
 <h1> Create a new Booking </h1>
 <%= form_for(@booking) do |f| %>
-
-    
     <%= f.collection_select :appliance_id, Appliance.where(availability: true), :id, :appliance_name %>
     <%= f.submit %>
 <% end %>

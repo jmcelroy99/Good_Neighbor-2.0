@@ -1,3 +1,7 @@
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
+
 <h1><%= @appliance.appliance_name %></h1>
 <% if @appliance.avatar.attached? %> 
 <image src="<%=(url_for(@appliance.avatar))%>">
@@ -14,5 +18,11 @@
     <%= "Unavailable for rent" %>
     <% end %>
 </ul>
+
+Reviews:<br>
+<% @appliance.reviews.each do |r| %>
+    Rating: <%= r.id %> Comment:<%= r.text_review %><br>
+<% end %>
+
 
 

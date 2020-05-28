@@ -12,11 +12,19 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = Review.find(params[:id])
-        @owner.update(review_params)
-        redirect_to @review
-        
+        @review = Review.create(review_params)
+        if @review.save
+            redirect_to appliances_path
+        else
+            flash[:errors] = @review.errors.full_messages
+            redirect_to @appliance
+        end        
     end
 
+    private
+    
+    def review_params
+        params.require(:review).permit(:booking_id, :rating, :text_review)
+    end
     
 end
