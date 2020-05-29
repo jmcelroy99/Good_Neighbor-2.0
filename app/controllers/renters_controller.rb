@@ -8,12 +8,21 @@ class RentersController < ApplicationController
        @renter = Renter.new
     end
 
+    # def create
+    #     @renter = Renter.new(renter_params)
+    #     return redirect_to controller: 'renters', action: 'new' unless @renter.save
+    #     session[:renter_id] = @renter.id
+    #     redirect_to appliances_path
+    # end
     def create
         @renter = Renter.new(renter_params)
-        return redirect_to controller: 'renters', action: 'new' unless @renter.save
-        session[:renter_id] = @renter.id
+        if @renter.save
         redirect_to appliances_path
-    end
+        else
+        flash[:errors] = @renter.errors.full_messages
+        redirect_to new_renter_path 
+        end    
+    end     
 
     def edit
        @renter = Renter.find(params[:id])

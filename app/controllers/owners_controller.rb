@@ -17,12 +17,24 @@ class OwnersController < ApplicationController
     #     end
     # end
 
+    # def create
+    #     @owner = Owner.create(owner_params)
+    #     return redirect_to controller: 'owners', action: 'new' unless @owner.save
+    #     session[:owner_id] = @owner.id
+    #     redirect_to @owner
+    # end
     def create
-        @owner = Owner.create(owner_params)
-        return redirect_to controller: 'owners', action: 'new' unless @owner.save
+        @owner = Owner.new(owner_params)
+        if @owner.save
+        
         session[:owner_id] = @owner.id
-        redirect_to @owner
-    end
+
+        redirect_to owner_path(session[:owner_id])
+        else
+        flash[:errors] = @owner.errors.full_messages
+        redirect_to new_owner_path 
+        end 
+    end   
 
     def edit
         @owner = Owner.find(params[:id])

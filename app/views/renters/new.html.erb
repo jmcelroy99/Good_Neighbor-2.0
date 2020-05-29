@@ -22,3 +22,6 @@
     Or <%= link_to(controller: 'sessions', action: 'new') { 'login'} %>
 <% end %>
   
+<% if flash[:errors] %>
+<%= flash[:errors] %>
+<% end %> 

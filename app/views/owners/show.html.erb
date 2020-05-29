@@ -2,7 +2,9 @@
   <input type=submit value='logout'>
 <% end %>
 
-<h1><%= @owner.username %></h1>
+<h1><%= @owner.username %> 's Appliances: </h1>
+
+
 
 <% @owner.appliances.each do |a| %>
     Appliance: <%= link_to a.appliance_name, a %> <br>
