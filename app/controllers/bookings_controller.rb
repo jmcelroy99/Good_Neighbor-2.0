@@ -13,7 +13,8 @@ class BookingsController < ApplicationController
         appliance_id = params[:booking][:appliance_id].to_i
         @booking = Booking.new(renter_id: renter_id, appliance_id: appliance_id)
         if @booking.save
-            redirect_to appliances_path
+            @booking.appliance.rented_out
+            redirect_to renter_path(renter_id)
         else
             flash[:errors] = @booking.errors.full_messages
             redirect_to new_booking_url
@@ -21,8 +22,11 @@ class BookingsController < ApplicationController
     end
 
     def destroy
-        Booking.find(params[:id]).destroy
-        redirect_to new_booking
+        @renter = Booking.find(params[:id]).renter_id
+        @booking = Booking.find(params[:id])
+        @booking.appliance.returned
+        @booking.destroy
+        redirect_to renter_path(@renter)
     end
 
     private

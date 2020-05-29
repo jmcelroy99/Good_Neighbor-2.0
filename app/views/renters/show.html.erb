@@ -4,6 +4,18 @@
 
 <h1><%= @renter.username %></h1>
 
+<h4><%= "Your Current Rentals:" %><br>
+<ol type="1">
 <% @renter.appliances.each do |a| %>
-    Appliance: <%= link_to a.appliance_name, a %>
+
+    <li>Appliance: <%= link_to a.appliance_name, a %> <%= link_to "Review Booking", new_review_path %>
+      <%= button_to "Return Rentals", {:controller => 'bookings', :action => 'destroy', :id => a.bookings.last.id }, :method => :delete %>
+      <%# @renter.bookings.each do |b| %>
+      <%# button_to "Return Rentals", {:controller => 'bookings', :action => 'destroy', :id => b.id }, :method => :delete %>
+    <%# end %>
+    </li>
 <% end %>
+
+
+</ol>  
+

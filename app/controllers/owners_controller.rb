@@ -19,7 +19,7 @@ class OwnersController < ApplicationController
 
     def create
         @owner = Owner.create(owner_params)
-        return redirect_to controller: 'owner', action: 'new' unless @user.save
+        return redirect_to controller: 'owners', action: 'new' unless @owner.save
         session[:owner_id] = @owner.id
         redirect_to @owner
     end

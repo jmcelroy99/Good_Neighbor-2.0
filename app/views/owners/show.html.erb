@@ -6,6 +6,9 @@
 
 <% @owner.appliances.each do |a| %>
     Appliance: <%= link_to a.appliance_name, a %> <br>
+      <%= button_to "delete appliance", {:controller => 'appliances', :action => 'destroy', :id => a.id }, :method => :delete %>
 
-<% end %>
+ <% end %>
 
+ <br>
+ <%= button_to "add new appliance", new_appliance_path, :method => :get %>

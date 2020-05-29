@@ -8,4 +8,6 @@ class Renter < ApplicationRecord
     # validates :password, uniqueness: true
     # validates :password, length: { in: 6..20 }
 
+    
+
 end
