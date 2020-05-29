@@ -6,6 +6,6 @@ class Booking < ApplicationRecord
 
     # validates :availabilty, 
 
-    
+
 
 end

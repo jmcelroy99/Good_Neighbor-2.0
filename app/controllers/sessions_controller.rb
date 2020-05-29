@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
         if @user.try(:authenticate, params[:password])
           redirect_to @user
         else
-          flash[:errors] = @user.errors.full_messages 
+          flash[:errors] = "incorrect username or password"
           redirect_to sessions_new_path
         end
     else
@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
         if @user.try(:authenticate, params[:password])
           redirect_to appliances_path
         else
-          flash[:errors] = @user.errors.full_messages 
+          flash[:errors] = "incorrect username or password"
           redirect_to sessions_new_path
         end
       end

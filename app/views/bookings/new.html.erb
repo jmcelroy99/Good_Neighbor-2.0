@@ -7,7 +7,7 @@
     <%= f.collection_select :appliance_id, Appliance.where(availability: true), :id, :appliance_name %>
     <%= f.submit %>
 <% end %>
-
+ 
 <% if flash[:errors] %>
     <%= flash[:errors] %>
 <% end %>

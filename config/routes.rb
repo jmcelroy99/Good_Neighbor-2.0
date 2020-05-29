@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
+
+
   get 'renter/home' => 'renter#home'
-  resources :bookings, only: [:index, :new, :create, :destroy ]
-  resources :appliances 
-  resources :owners, except: [:index]
+  resources :bookings
+  resources :appliances
+  resources :owners
   resources :renters
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

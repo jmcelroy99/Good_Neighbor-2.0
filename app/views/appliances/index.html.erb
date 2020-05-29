@@ -4,6 +4,12 @@
 
 <h1> Appliances Available for Rent! </h1>
 
+<h4>Search For Appliances</h4>
+  <%= form_tag(appliances_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag ("Search") %>
+    <% end %>
+
 <ol type = "1">
 <% @appliances.each do |appliance| %>
    <li><%= link_to appliance.appliance_name, appliance %>
@@ -13,3 +19,5 @@
    <% end %>
    <% end %>
 </ol>
+
+
